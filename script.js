@@ -3,8 +3,16 @@
 //creamos el array con emojis
 let myArray = ["👻", "👹", "👽"];
 console.log(myArray);
+
+// creamos la copia del array
+const myCopy = [...myArray, ...myArray];
+console.log(myCopy)
+
+// mezclamos las cartas para que el juego funcione
+myCopy.sort(() => Math.random() -0.5);
+
 //crear un nuevo array con un map que recorre los emojis
-const myCards = myArray.map((emoji) => {
+const myCards = myCopy.map((emoji) => {
   console.log(emoji);
   //creamos un elemento de tipo "section"
   const section = document.createElement("section");
