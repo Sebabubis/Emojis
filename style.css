@@ -1,4 +1,15 @@
-body {
+header {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  background-color: blue;
+  color: red;
+  text-align: center;
+}
+main {
   font-family: sans-serif;
   font-weight: bold;
   display: flex;
@@ -6,8 +17,8 @@ body {
 }
 
 .card {
-  width: 200px;
-  height: 300px;
+  width: 120px;
+  height: 180px;
   perspective: 600px;
   margin: 1rem;
 }
