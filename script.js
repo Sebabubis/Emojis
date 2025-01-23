@@ -1,60 +1,110 @@
 "use strict";
 
+//tendré los emojis aquí por comodidad por si borro en las pruebas
+// ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩"];
+
 //creamos el array con emojis
-let myArray = ["👻", "👹", "👽"];
-console.log(myArray);
 
-// creamos la copia del array
-const myCopy = [...myArray, ...myArray];
-console.log(myCopy)
+let myArray = ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩"];
 
-// mezclamos las cartas para que el juego funcione
-myCopy.sort(() => Math.random() -0.5);
-
+let myCopy = [...myArray, ...myArray];
+//console.log(myArray);
 //crear un nuevo array con un map que recorre los emojis
-const myCards = myCopy.map((emoji) => {
-  console.log(emoji);
-  //creamos un elemento de tipo "section"
-  const section = document.createElement("section");
-  //añadimos la clase "card"
-  section.classList.add("card");
-  //añadimos el contenido a la carta
-  section.innerHTML = `<div class="content">
+
+//declaramos variables:
+//seleccionamos el main del HTML
+const main = document.querySelector("main");
+
+//para el contador, selecciono el h2
+
+const contador = document.querySelector("h2");
+
+let carta1;
+let carta2;
+let intentos;
+let paresRevelados;
+
+function init() {
+  carta1 = null;
+  carta2 = null;
+  intentos = 0;
+  paresRevelados = 0;
+  main.innerHTML = "";
+  contador.innerHTML = "";
+}
+function start() {
+  init();
+  myCopy.sort(() => Math.random() - 0.5);
+
+  const myCards = myCopy.map((emoji) => {
+    //creamos un elemento de tipo "section"
+    const section = document.createElement("section");
+    //añadimos la clase "card"
+    section.classList.add("card");
+    //añadimos el contenido a la carta
+    section.innerHTML = `<div class="content">
   <div class="front">❔</div>
   <div class="back">${emoji}</div>
   </div>`;
-  //con el return devolvemos la section
-  return section;
-  console.log(section);
-});
-console.log(myCards);
+    //con el return devolvemos la section
+    return section;
+    console.log(section);
+  });
+  //console.log(myCards);
 
-//seleccionamos el body del HTML
-const body = document.querySelector("body");
-console.log(body);
+  //console.log(contador.textContent);
 
-//añadimos al body solo el contenido del array de cartas
-body.append(...myCards);
+  //añadimos al main solo el contenido del array de cartas
+  main.append(...myCards);
+  console.log(main);
+  //seleccionamos todas las cartas del HTML
+  const cards = document.querySelectorAll(".card");
+  //Declaramos la funcion para darle la vuelta a las cartas
 
-//seleccionamos todas las cartas del HTML
-const cards = document.querySelectorAll(".card");
+  let reveal = (e) => {
+    const currentCard = e.currentTarget;
 
-//Declaramos la funcion para darle la vuelta a las cartas
-const reveal = (e) => {
-  //selecciona a la carta que le dimos click (evento click)
-  const currentCard = e.currentTarget;
-  console.log(currentCard);
+    currentCard.classList.add("flipped");
 
-  //aquí añadimos la clase flipped a la carta
-  //y esto es lo que hace que se de realmente la vuelta
-  currentCard.classList.add("flipped");
-  //ejecuta algo al cabo de un segundo a la currentCard
-  /*setTimeout(() => { 
-//le quita la clase, poniendola de nuevo boca abajo
-    currentCard.classList.remove("flipped");
-  }, 1000);*/
-};
+    if (!carta1) {
+      carta1 = currentCard;
+      return;
+    }
+    // if (currentCard !== carta1 && currentCard !== carta2) {
+    carta2 = currentCard;
+    // }
+    //console.log(carta1.textContent === carta2.textContent);
 
-for (const card of cards) {
-  card.addEventListener("click", reveal);
+    if (carta1.textContent === carta2.textContent) {
+      carta1 = null;
+      carta2 = null;
+
+      paresRevelados++;
+
+      console.log("has acertado");
+    } else {
+      setTimeout(() => {
+        carta1.classList.remove("flipped");
+        carta2.classList.remove("flipped");
+        carta1 = null;
+        carta2 = null;
+      }, 1000);
+    }
+
+    intentos++;
+    console.log(intentos);
+    contador.innerHTML = `LLevas ${intentos} intentos`;
+
+    if (paresRevelados === myArray.length) {
+      setTimeout(() => {
+        alert(`Has terminado, el resultado final:  ${intentos} intentos.`);
+        start();
+      }, 500);
+    }
+  };
+
+  for (const card of cards) {
+    card.addEventListener("click", reveal);
+  }
 }
+start();
