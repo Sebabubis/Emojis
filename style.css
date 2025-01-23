@@ -13,19 +13,9 @@ main {
   font-family: sans-serif;
   font-weight: bold;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-  height: 100vh;
-  margin: 0;
 }
 
-/*contenedor del juego*/
-.game-container {
-  display: grid;
-  grid-template-columns: repeat(4, 100px);
-  grid-gap: 10px;
-}
 .card {
   width: 120px;
   height: 180px;
@@ -63,10 +53,4 @@ main {
 .card.flipped .content {
   transform: rotateY(180deg);
   transition: transform 0.5s;
-}
-
-.score {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 1.5rem;
 }

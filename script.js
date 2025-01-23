@@ -23,12 +23,14 @@ let carta1;
 let carta2;
 let intentos;
 let paresRevelados;
+let bloqueo = false;
 
 function init() {
   carta1 = null;
   carta2 = null;
   intentos = 0;
   paresRevelados = 0;
+  bloqueo = false;
   main.innerHTML = "";
   contador.innerHTML = "";
 }
@@ -62,6 +64,7 @@ function start() {
   //Declaramos la funcion para darle la vuelta a las cartas
 
   let reveal = (e) => {
+    if (bloqueo) return;
     const currentCard = e.currentTarget;
 
     currentCard.classList.add("flipped");
@@ -72,14 +75,15 @@ function start() {
     }
     // if (currentCard !== carta1 && currentCard !== carta2) {
     carta2 = currentCard;
+    bloqueo = true;
     // }
     //console.log(carta1.textContent === carta2.textContent);
 
     if (carta1.textContent === carta2.textContent) {
       carta1 = null;
       carta2 = null;
-
       paresRevelados++;
+      bloqueo = false;
 
       console.log("has acertado");
     } else {
@@ -88,7 +92,8 @@ function start() {
         carta2.classList.remove("flipped");
         carta1 = null;
         carta2 = null;
-      }, 1000);
+        bloqueo = false;
+      }, 500);
     }
 
     intentos++;
@@ -97,7 +102,7 @@ function start() {
 
     if (paresRevelados === myArray.length) {
       setTimeout(() => {
-        alert(`Has terminado, el resultado final:  ${intentos} intentos.`);
+        alert(`Has terminado, el resultado final:  ${intentos} intentos`);
         start();
       }, 500);
     }
