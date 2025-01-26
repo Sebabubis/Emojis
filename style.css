@@ -1,7 +1,7 @@
 /*Creamos los aspectos generais de la pagina*/
-@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Iceberg&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barriecito&family=Iceberg&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -38,26 +38,27 @@ header {
   gap: 1rem;
 }
 
-h1,article {
-  
+h1,
+article {
   margin: 3rem;
   border: var(--border) var(--color1);
   background-color: var(--color2);
   border-radius: 5px;
   font-size: 50px;
 }
-ul, h2{
+ul,
+h2 {
   font-size: 30px;
   padding: 1.2rem;
   list-style-type: none;
 }
 
-p{
-  text-decoration: underline ;
+p {
+  text-decoration: underline;
 }
 
 /*En el main, todos los estilos del juego*/
-main { 
+main {
   justify-content: space-around;
   grid-row: 1 / 3;
   grid-column: 2/4;
@@ -73,7 +74,6 @@ main {
 }
 
 .card {
-  
   width: 75%;
   height: 90%;
   perspective: 600px;
@@ -89,7 +89,6 @@ main {
 
 .front,
 .back {
-  
   position: absolute;
   height: 100%;
   width: 100%;
@@ -102,7 +101,7 @@ main {
   backface-visibility: hidden;
   user-select: none;
 }
- /*Animaciones de las cartas*/
+/*Animaciones de las cartas*/
 .back {
   background: linear-gradient(var(--color2), var(--color3));
   transform: rotateY(180deg);
@@ -120,12 +119,12 @@ main {
   align-self: center;
 }
 
-a{
+a {
   color: white;
   text-decoration: none;
 }
 
-.play-btn{
+.play-btn {
   width: 200px;
   height: 50px;
   font-size: 30px;
@@ -138,40 +137,41 @@ a{
 }
 
 .play-btn:hover {
-background-color: var(--color1);
-border: 3px outset var(--color3);
-color: white;
+  background-color: var(--color1);
+  border: 3px outset var(--color3);
+  color: white;
 }
-
 
 /*Responsividad para mobiles*/
 @media (max-width: 600px) {
-  body{
+  body {
     grid-template-columns: 100%;
     grid-template-rows: 10% 20% 2fr 10%;
   }
-  header{
+  header {
     grid-row: 1/ 3;
     grid-column: 1;
     width: 94%;
   }
 
-  h1,article {
+  h1,
+  article {
     font-size: 20px;
     margin: 20px;
   }
 
-  ul, h2{
+  ul,
+  h2 {
     font-size: 15px;
     padding: 15px;
     list-style-type: none;
   }
-  
+
   main {
     grid-row: 3/ 5;
     grid-column: 1;
-    
-    max-width: 94%
+
+    max-width: 94%;
   }
 
   .card {
@@ -179,9 +179,14 @@ color: white;
     width: 85%;
     height: 95%;
   }
-  
+
   .startBtn-container {
-    grid-row: 5/6 ;
+    grid-row: 5/6;
     grid-column: 1;
   }
+}
+
+.back,
+.front {
+  font-size: 5rem;
 }
