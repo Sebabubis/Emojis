@@ -24,9 +24,7 @@ let carta2;
 let intentos;
 let paresRevelados;
 let bloqueo = false;
-
 button.addEventListener("click", start);
-
 function init() {
   carta1 = null;
   carta2 = null;
