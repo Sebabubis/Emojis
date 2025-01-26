@@ -1,13 +1,26 @@
 "use strict";
 
 //tendré los emojis aquí por comodidad por si borro en las pruebas
-// ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩"];
+// ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩", "🫠","🤡","💀","🐶"];
 
 //creamos el array con emojis
 
-let myArray = ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩"];
+let myArray2 = [
+  "👻",
+  "👹",
+  "👽",
+  "🙈",
+  "🤩",
+  "🥶",
+  "🤪",
+  "💩",
+  "🫠",
+  "🤡",
+  "💀",
+  "🐶",
+];
 
-let myCopy = [...myArray, ...myArray];
+let myCopy2 = [...myArray2, ...myArray2];
 //console.log(myArray);
 //crear un nuevo array con un map que recorre los emojis
 
@@ -36,9 +49,9 @@ function init() {
 }
 function start() {
   init();
-  myCopy.sort(() => Math.random() - 0.5);
+  myCopy2.sort(() => Math.random() - 0.5);
 
-  const myCards = myCopy.map((emoji) => {
+  const myCards2 = myCopy2.map((emoji) => {
     //creamos un elemento de tipo "section"
     const section = document.createElement("section");
     //añadimos la clase "card"
@@ -57,7 +70,7 @@ function start() {
   //console.log(contador.textContent);
 
   //añadimos al main solo el contenido del array de cartas
-  main.append(...myCards);
+  main.append(...myCards2);
   console.log(main);
   //seleccionamos todas las cartas del HTML
   const cards = document.querySelectorAll(".card");
@@ -73,14 +86,12 @@ function start() {
       carta1 = currentCard;
       return;
     }
-    // if (currentCard !== carta1 && currentCard !== carta2) {
+
+    //he hecho para que no pueda clicar siempre la misma carta, pero me da un error en la consola. Pero el juego sigue funcionando.
     if (currentCard !== carta1) {
       carta2 = currentCard;
       bloqueo = true;
     }
-    /*  carta2 = currentCard;
-    bloqueo = true; */
-
     // }
     //console.log(carta1.textContent === carta2.textContent);
 
@@ -110,7 +121,7 @@ function start() {
       contador.innerHTML = `LLevas ${intentos} intentos `;
     }
 
-    if (paresRevelados === myArray.length) {
+    if (paresRevelados === myArray2.length) {
       setTimeout(() => {
         alert(`¡Has terminado! tu resultado final es:  ${intentos} intentos.`);
         start();
