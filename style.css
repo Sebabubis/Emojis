@@ -3,11 +3,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;900&display=swap");
 
 body {
-  /* background: linear-gradient(rgb(99, 7, 247), rgb(253, 255, 254)); */
-  background-image: url(/img/forest-game-background-vector.jpg);
+  background: linear-gradient(rgb(99, 7, 247), rgb(253, 255, 254));
+  /* background-image: url(/img/forest-game-background-vector.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
 }
 header {
   background: linear-gradient(black, gray);
