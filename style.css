@@ -4,6 +4,7 @@
 
 body {
   background: linear-gradient(rgb(99, 7, 247), rgb(253, 255, 254));
+  background-repeat: no-repeat;
   /* background-image: url(/img/forest-game-background-vector.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,8 +16,9 @@ header {
   font-family: "Permanent Marker", cursive;
   justify-self: center;
   text-align: center;
-  min-width: 400px;
-  max-width: 600px;
+  width: 75%;
+  /* min-width: 400px; */
+  /* max-width: 600px; */
 }
 
 h2 {
@@ -24,8 +26,9 @@ h2 {
   color: white;
   font-family: "Permanent Marker", cursive;
   text-align: center;
-  min-width: 400px;
-  max-width: 600px;
+  width: 75%;
+  /* min-width: 400px; */
+  /* max-width: 600px; */
   justify-self: center;
 }
 
@@ -33,12 +36,6 @@ nav {
   display: flex;
   justify-content: center;
   gap: 2rem;
-}
-
-a {
-  font-family: "Permanent Marker", cursive;
-  background: linear-gradient(black, gray);
-  color: white;
 }
 
 button {
@@ -54,8 +51,8 @@ main {
   font-weight: bold;
   display: grid;
   max-width: 700px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
   justify-self: center;
   justify-content: space-evenly;
@@ -107,7 +104,9 @@ main {
 
 @media (min-width: 600px) {
   main {
-    max-width: 700px;
+    max-width: 75%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
   }
   .card {
     width: 120px;
