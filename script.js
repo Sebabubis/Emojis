@@ -5,7 +5,7 @@
 
 //creamos el array con emojis
 
-let myArray = ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩"];
+let myArray = ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩", "🤡"];
 
 let myCopy = [...myArray, ...myArray];
 //console.log(myArray);
@@ -14,7 +14,8 @@ let myCopy = [...myArray, ...myArray];
 //declaramos variables:
 //seleccionamos el main del HTML
 const main = document.querySelector("main");
-const button = document.querySelector("button");
+const reiniciar = document.querySelector("#reiniciar");
+const nivel2 = document.querySelector("#nivel2");
 //para el contador, selecciono el h2
 
 const contador = document.querySelector("h2");
@@ -24,7 +25,7 @@ let carta2;
 let intentos;
 let paresRevelados;
 let bloqueo = false;
-button.addEventListener("click", start);
+reiniciar.addEventListener("click", start);
 function init() {
   carta1 = null;
   carta2 = null;
@@ -50,11 +51,7 @@ function start() {
   </div>`;
     //con el return devolvemos la section
     return section;
-    console.log(section);
   });
-  //console.log(myCards);
-
-  //console.log(contador.textContent);
 
   //añadimos al main solo el contenido del array de cartas
   main.append(...myCards);
