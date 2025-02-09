@@ -5,7 +5,7 @@
 
 //creamos el array con emojis
 
-let myArray = ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩", "🤡"];
+let myArray = ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩", "🤡", "🐶"];
 
 let myCopy = [...myArray, ...myArray];
 //console.log(myArray);
@@ -15,10 +15,10 @@ let myCopy = [...myArray, ...myArray];
 //seleccionamos el main del HTML
 const main = document.querySelector("main");
 const reiniciar = document.querySelector("#reiniciar");
-const nivel2 = document.querySelector("#nivel2");
+const intentosButton = document.querySelector("#intentos");
 //para el contador, selecciono el h2
 
-const contador = document.querySelector("h2");
+// const contador = document.querySelector("h2");
 
 let carta1;
 let carta2;
@@ -32,7 +32,7 @@ function init() {
   intentos = 0;
   paresRevelados = 0;
   main.innerHTML = "";
-  contador.innerHTML = "";
+  intentosButton.innerHTML = "Intentos : 0";
   bloqueo = false;
 }
 function start() {
@@ -70,16 +70,11 @@ function start() {
       carta1 = currentCard;
       return;
     }
-    // if (currentCard !== carta1 && currentCard !== carta2) {
+
     if (currentCard !== carta1) {
       carta2 = currentCard;
       bloqueo = true;
     }
-    /*  carta2 = currentCard;
-    bloqueo = true; */
-
-    // }
-    //console.log(carta1.textContent === carta2.textContent);
 
     if (carta1.textContent === carta2.textContent) {
       carta1 = null;
@@ -101,11 +96,17 @@ function start() {
 
     intentos++;
     console.log(intentos);
-    if (intentos < 2) {
+    /* if (intentos < 2) {
       contador.innerHTML = `LLevas ${intentos} intento`;
     } else {
       contador.innerHTML = `LLevas ${intentos} intentos `;
+    } */
+    if (intentos < 1) {
+      intentosButton.innerHTML = `Intentos : ${intentos} `;
+    } else {
+      intentosButton.innerHTML = `Intentos :  ${intentos} `;
     }
+    // span.innerHTML = `  ${intentos}`;
 
     if (paresRevelados === myArray.length) {
       setTimeout(() => {

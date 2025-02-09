@@ -14,22 +14,14 @@ header {
   background: linear-gradient(black, gray);
   color: white;
   font-family: "Permanent Marker", cursive;
+  font-size: 0.7rem;
   justify-self: center;
   text-align: center;
-  width: 75%;
+  width: 80%;
+  height: fit-content;
+  border-radius: 1rem;
   /* min-width: 400px; */
   /* max-width: 600px; */
-}
-
-h2 {
-  background: linear-gradient(black, gray);
-  color: white;
-  font-family: "Permanent Marker", cursive;
-  text-align: center;
-  width: 75%;
-  /* min-width: 400px; */
-  /* max-width: 600px; */
-  justify-self: center;
 }
 
 nav {
@@ -47,12 +39,13 @@ button {
 }
 
 main {
+  margin-top: 2rem;
   font-family: serif;
   font-weight: bold;
   display: grid;
   max-width: 700px;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
   justify-self: center;
   justify-content: space-evenly;
@@ -103,16 +96,25 @@ main {
 }
 
 @media (min-width: 600px) {
+  header {
+    max-width: 40%;
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1.5rem;
+  }
   main {
     max-width: 75%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    margin-top: 1rem;
   }
   .card {
     width: 120px;
     height: 180px;
     perspective: 600px;
-    margin: 1rem;
+    margin: 0.5rem;
   }
 
   .front,
