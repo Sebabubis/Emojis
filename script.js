@@ -1,14 +1,11 @@
 "use strict";
 
-//tendré los emojis aquí por comodidad por si borro en las pruebas
-// ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩"];
-
 //creamos el array con emojis
 
 let myArray = ["👻", "👹", "👽", "🙈", "🤩", "🥶", "🤪", "💩", "🤡", "🐶"];
 
 let myCopy = [...myArray, ...myArray];
-//console.log(myArray);
+
 //crear un nuevo array con un map que recorre los emojis
 
 //declaramos variables:
@@ -16,16 +13,15 @@ let myCopy = [...myArray, ...myArray];
 const main = document.querySelector("main");
 const reiniciar = document.querySelector("#reiniciar");
 const intentosButton = document.querySelector("#intentos");
-//para el contador, selecciono el h2
-
-// const contador = document.querySelector("h2");
 
 let carta1;
 let carta2;
 let intentos;
 let paresRevelados;
 let bloqueo = false;
+//botón de reinicio
 reiniciar.addEventListener("click", start);
+
 function init() {
   carta1 = null;
   carta2 = null;
@@ -35,6 +31,7 @@ function init() {
   intentosButton.innerHTML = "Intentos : 0";
   bloqueo = false;
 }
+
 function start() {
   init();
   myCopy.sort(() => Math.random() - 0.5);
@@ -58,11 +55,16 @@ function start() {
   console.log(main);
   //seleccionamos todas las cartas del HTML
   const cards = document.querySelectorAll(".card");
-  //Declaramos la funcion para darle la vuelta a las cartas
 
+  //Declaramos la funcion para darle la vuelta a las cartas
   let reveal = (e) => {
-    if (bloqueo) return;
     const currentCard = e.currentTarget;
+    if (
+      bloqueo ||
+      currentCard === carta1 ||
+      currentCard.classList.contains("flipped")
+    )
+      return;
 
     currentCard.classList.add("flipped");
 
@@ -76,14 +78,15 @@ function start() {
       bloqueo = true;
     }
 
+    //comprobamos si las cartas son iguales
     if (carta1.textContent === carta2.textContent) {
       carta1 = null;
       carta2 = null;
 
       paresRevelados++;
-      bloqueo = false;
+      console.log(`Pares revelados : ${paresRevelados}`);
 
-      console.log("has acertado");
+      bloqueo = false;
     } else {
       setTimeout(() => {
         carta1.classList.remove("flipped");
@@ -95,19 +98,12 @@ function start() {
     }
 
     intentos++;
-    console.log(intentos);
-    /* if (intentos < 2) {
-      contador.innerHTML = `LLevas ${intentos} intento`;
-    } else {
-      contador.innerHTML = `LLevas ${intentos} intentos `;
-    } */
-    if (intentos < 1) {
-      intentosButton.innerHTML = `Intentos : ${intentos} `;
-    } else {
-      intentosButton.innerHTML = `Intentos :  ${intentos} `;
-    }
-    // span.innerHTML = `  ${intentos}`;
+    console.log(`Intentos :  ${intentos}`);
 
+    //mostramos los intentos que llevamos
+    intentosButton.innerHTML = `Intentos :  ${intentos} `;
+
+    //comprobamos si hemos ganado
     if (paresRevelados === myArray.length) {
       setTimeout(() => {
         alert(`¡Has terminado! tu resultado final es:  ${intentos} intentos.`);
