@@ -5,11 +5,8 @@
 body {
   background: linear-gradient(rgb(99, 7, 247), rgb(253, 255, 254));
   background-repeat: no-repeat;
-  /* background-image: url(/img/forest-game-background-vector.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed; */
 }
+
 header {
   background: linear-gradient(black, gray);
   color: white;
@@ -20,8 +17,6 @@ header {
   width: 80%;
   height: fit-content;
   border-radius: 1rem;
-  /* min-width: 400px; */
-  /* max-width: 600px; */
 }
 
 nav {
@@ -51,10 +46,6 @@ main {
   justify-content: space-evenly;
   align-items: center;
 }
-
-/* section {
-  margin: 1px;
-} */
 
 .card {
   width: 60px;
